@@ -35,11 +35,13 @@ import { ConfigurationModule } from './commons/config/config.module';
     //ORM : Database Connection
     TypeOrmModule.forRoot({
       type: 'mariadb',
-      host: 'localhost',
+      //host: 'localhost',
+      host: 'my-database',
       port: 3306,
       username: 'root',
       password: '1111',
       database: 'mydocker03',
+      //database: 'myproject3',
       //entities: [Board],
       entities: [__dirname + '/apis/**/*.entity.*'],
       synchronize: true,
