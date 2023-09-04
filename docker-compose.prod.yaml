@@ -2,7 +2,8 @@ version: "3.7" #Docker-compose 버전, 2버전과 3버전은 차이가 큼
 services:
   my-backend:
     build:
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 8000:3000
     env_file:
