@@ -1,0 +1,22 @@
+version: "3.7" #Docker-compose 버전, 2버전과 3버전은 차이가 큼
+services:
+  my-backend:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:3000
+    env_files:
+      - ./.env.prod
+  # my-database:
+  #   platform: linux/x86_64 #M1사용시
+  #   image: mariadb:latest
+  #   #   build:
+  #   #     context: ./database
+  #   #     dockerfile: Dockerfile
+  #   environment:
+  #     MYSQL_DATABASE: "mydocker03"
+  #     MYSQL_ROOT_PASSWORD: "1111"
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - ./local-mariadb:/var/lib/mysql
