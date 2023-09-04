@@ -5,7 +5,7 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 8000:3000
-    env_files:
+    env_file:
       - ./.env.dev
   # my-database:
   #   platform: linux/x86_64 #M1사용시
