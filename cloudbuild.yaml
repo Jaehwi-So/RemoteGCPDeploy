@@ -16,14 +16,14 @@ steps:
       - docker-compose.k8s.prod.yaml
       - push
 
-  # 3. kubectl set image deployment/my-project-nestjs my-backend-name-sha256-1=asia.gcr.io/cool-freehold-377205/my-backend-name:0.4
+  # 3. kubectl set image deployment/my-project-nestjs my-backend-name-sha256-1=asia.gcr.io/cool-freehold-377205/my-backend-name:0.5
   - name : gcr.io/cloud-builders/kubectl  # 없으면 다운로드
     args:
       # - kubectl
       - set
       - image
       - deployment/my-project-nestjs
-      - my-backend-name-sha256-1=asia.gcr.io/cool-freehold-377205/my-backend-name:0.4
+      - my-backend-name-sha256-1=asia.gcr.io/cool-freehold-377205/my-backend-name:0.5
       # 해당 환경변수 설정
       # gcloud container clusters get-credentials autopilot-cluster-1 --region asia-northeast3 --project cool-freehold-377205
     env:
