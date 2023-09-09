@@ -24,11 +24,13 @@ steps:
       - image
       - deployment/my-project-nestjs
       - my-backend-name-sha256-1=asia.gcr.io/cool-freehold-377205/my-backend-name:0.4
+      # 해당 환경변수 설정
+      # gcloud container clusters get-credentials autopilot-cluster-1 --region asia-northeast3 --project cool-freehold-377205
+    env:
+      - CLOUDSDK_COMPUTE_ZONE=asia-northeast3 # 리전
+      - CLOUDSDK_CONTAINER_CLUSTER=autopilot-cluster-1  # 쿠버네티스 클러스터
 
-  # 해당 환경변수 설정
-  # gcloud container clusters get-credentials autopilot-cluster-1 --region asia-northeast3 --project cool-freehold-377205
-  env:
-    - CLOUDSDK_COMPUTE_ZONE=asia-northeast3 # 리전
-    - CLOUDSDK_CONTAINER_CLUSTER=autopilot-cluster-1  # 쿠버네티스 클러스터
+
+
 
 
