@@ -1,0 +1,16 @@
+version: "3.7" #Docker-compose 버전, 2버전과 3버전은 차이가 큼
+services:
+  my-backend:
+    image: asia.gcr.io/cool-freehold-377205/my-backend-name:0.3 #레지스트리 리전/프로젝트ID/이름:버전, 버전은 반드시 배포할 때마다 바꿔서 해주어야 클라우드가 배포를 인식함
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ports:
+    #   - 8000:3000
+    # env_file:
+    #   - ./.env.prod
+
+    #포트포워딩, 환경변수 설정 등 전부 쿠버네티스에 위임
+
+    

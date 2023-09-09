@@ -11,6 +11,7 @@ import { ProductModule } from './apis/products/product.module';
 import { ProductCategoryModule } from './apis/productsCategory/productCategory.module';
 import { UserModule } from './apis/users/user.module';
 import { ConfigurationModule } from './commons/config/config.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -35,20 +36,17 @@ import { ConfigurationModule } from './commons/config/config.module';
     //ORM : Database Connection
     TypeOrmModule.forRoot({
       type: process.env.DATABASE_TYPE,
-      //host: 'localhost',
       host: process.env.DATABASE_HOST,
       port: process.env.DATABASE_PORT,
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_DATABASE,
-      //database: 'myproject3',
-      //entities: [Board],
       entities: [__dirname + '/apis/**/*.entity.*'],
       synchronize: true,
       logging: true,
     }),
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
