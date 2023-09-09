@@ -1,0 +1,34 @@
+steps: 
+  # 1. Docker-compose -f docker-compose.k8s.prod.yaml build
+  - name : docker/compose:1.29.0  # 없으면 다운로드
+    args:
+      # - docker-compose
+      - -f
+      # - docker/docker-compose.k8s.prod.yaml : 명령어가 실행되는 지점은 Github 루트 경로임. 따라서 docker-compose의 경로를 잘 맞춰주기
+      - docker-compose.k8s.prod.yaml
+      - build
+
+  # 2. Docker-compose -f docker-compose.k8s.prod.yaml push
+  - name : docker/compose:1.29.0  # 없으면 다운로드
+    args:
+      # - docker-compose
+      - -f
+      - docker-compose.k8s.prod.yaml
+      - push
+
+  # 3. kubectl set image deployment/my-project-nestjs my-backend-name-sha256-1=asia.gcr.io/cool-freehold-377205/my-backend-name:0.4
+  - name : gcr.io/cloud-builders/kubectl  # 없으면 다운로드
+    args:
+      # - kubectl
+      - set
+      - image
+      - deployment/my-project-nestjs
+      - my-backend-name-sha256-1=asia.gcr.io/cool-freehold-377205/my-backend-name:0.4
+
+  # 해당 환경변수 설정
+  # gcloud container clusters get-credentials autopilot-cluster-1 --region asia-northeast3 --project cool-freehold-377205
+  env:
+    - CLOUDSDK_COMPUTE_ZONE=asia-northeast3 # 리전
+    - CLOUDSDK_CONTAINER_CLUSTER=autopilot-cluster-1  # 쿠버네티스 클러스터
+
+

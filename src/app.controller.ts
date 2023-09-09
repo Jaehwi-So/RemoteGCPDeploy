@@ -5,6 +5,6 @@ export class AppController{
 
     @Get("/")
     healthCheck(): string {
-        return "HealthCheck"
+        return "HealthCheck2"
     }
 }
